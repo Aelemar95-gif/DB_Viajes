@@ -29,8 +29,3 @@ Algunas consultas implementadas:
 - Conteo de reservas por medio de pago.
 - Vista `MicrosSemicamaView` para viajes realizados por micros con asientos semi-cama.
 - Último viaje realizado por tipo de asiento.
-
-## Cómo usar
-1. Clonar el repositorio:
-```bash
-git clone https://github.com/tu-usuario/nombre-del-repo.git
