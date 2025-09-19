@@ -1,7 +1,7 @@
 
 USE Viajes2025_Grupo2;
 
---1 - Listado de pasajeros de nacionalidad ìargentinaî, ordenados por DNI. 
+--1 - Listado de pasajeros de nacionalidad ‚Äúargentina‚Äù, ordenados por DNI. 
 --Mostrar nombre y apellido (en una misma columna), DNI y edad.
 
 SELECT 
@@ -13,7 +13,7 @@ FROM PASajero P
 WHERE p.nacionalidad = 'Argentina'
 ORDER BY p.dni;
 
---2 - Listado de reservAS pagadAS con tarjeta de ìdÈbitoî o de ìcrÈditoî, ordenadAS por fecha de reserva. 
+--2 - Listado de reservAS pagadAS con tarjeta de ‚Äúd√©bito‚Äù o de ‚Äúcr√©dito‚Äù, ordenadAS por fecha de reserva. 
 --Mostrar el ID de la reserva, el nombre y email del usuario, y el medio de pago.
 
 SELECT 
@@ -25,13 +25,13 @@ SELECT
 FROM Reserva R
 INNER JOIN Usuario U ON R.usuario_id = U.id
 INNER JOIN Medio_pago MP ON R.medio_pago_reserva = MP.id
-WHERE MP.tipo LIKE '%crÈdito%'
-   OR MP.tipo LIKE '%dÈbito%'
+WHERE MP.tipo LIKE '%cr√©dito%'
+   OR MP.tipo LIKE '%d√©bito%'
 ORDER BY R.fecha_reserva;
 
 --3 - Listado de viajes con origen o destino en Buenos Aires. 
 --Mostrar nombre de la ciudad de origen, ciudad de destino, fechAS de salida y 
---llegada en formato dÌa/mes/aÒo hora:minuto, y precio.
+--llegada en formato d√≠a/mes/a√±o hora:minuto, y precio.
 
 SELECT 
         v.id,
@@ -46,7 +46,7 @@ INNER JOIN Ciudad CD ON v.destino = CD.id
 WHERE CO.provincia LIKE '%Buenos%% %Aires%'
 OR CD.provincia LIKE '%Buenos%% %Aires%';
 
---4 - Precio promedio, mÌnimo y m·ximo de los viajes.
+--4 - Precio promedio, m√≠nimo y m√°ximo de los viajes.
 
 SELECT 
         AVG (v.precio) AS PromedioViajes,
@@ -56,7 +56,7 @@ SELECT
 FROM Viaje V;
 
 --5 - Listado de medios de pago y la cantidad de reservAS realizadAS con cada medio, 
---ordenados alfabÈticamente por medio de pago. Mostrar solo los medios de pago con m·s de 1 reserva.
+--ordenados alfab√©ticamente por medio de pago. Mostrar solo los medios de pago con m√°s de 1 reserva.
 
 SELECT 
     MP.tipo AS MedioPago,
@@ -67,7 +67,7 @@ GROUP BY MP.tipo
 HAVING COUNT(R.id) > 1
 ORDER BY MP.tipo;
 
---6 - Crear una view en la base de datos llamada ìMicrosSemicamaViewî que devuelva un listadode todos los viajes realizados
+--6 - Crear una view en la base de datos llamada ‚ÄúMicrosSemicamaView‚Äù que devuelva un listadode todos los viajes realizados
 --por micros con asientos Semi-cama. 
 --Mostrar: Patente del micro, capacidad, fecha de salida del viaje, ciudad de origen y ciudad de destino.
 
@@ -87,7 +87,7 @@ INNER JOIN Ciudad C1 ON V.origen = C1.id
 INNER JOIN Ciudad C2 ON V.destino = C2.id
 WHERE TA.tipo = 'Semicama';
 
---7 - Realizar una consulta sobre la view anterior y mostrar solamente el ˙ltimo viaje realizado (el m·s reciente).
+--7 - Realizar una consulta sobre la view anterior y mostrar solamente el √∫ltimo viaje realizado (el m√°s reciente).
 
 SELECT TOP (1) MSV.IdViaje,
       MSV.PatenteMicro,
